@@ -4,11 +4,23 @@ using System.Text;
 
 namespace CodingClass_7_3_2019
 {
+    enum ClassDifficultyLevel
+    {
+        Beginner,
+        Intermediate,
+        Advance
+    }
+    enum ClassType
+    {
+        CSharp,
+        Python,
+        Java
+    }
     /// <summary>
     /// A student account where you can 
     /// enroll or exit from the class
     /// </summary>
-        class StudentAccount
+    class StudentAccount
     {
         private static int lastStudentAccountNumber = 0;
         #region Properties
@@ -36,11 +48,11 @@ namespace CodingClass_7_3_2019
         /// <summary>
         /// Beginner, Intermediate or Advance class
         /// </summary>
-        public string StudentDifficultyLevel { get; set; }
+        public ClassDifficultyLevel StudentDifficultyLevel { get; set; }
         /// <summary>
         /// Online, Inperson or combo class
         /// </summary>
-        public string StudentClassType { get; set; }
+        public ClassType StudentClassType { get; set; }
         /// <summary>
         /// Total number of classes enrolled for
         /// </summary>
