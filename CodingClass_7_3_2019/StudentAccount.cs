@@ -16,13 +16,23 @@ namespace CodingClass_7_3_2019
         Python,
         Java
     }
+
+    enum PaymentMethod
+    {
+        Credit,
+        Debit
+    }
     /// <summary>
     /// A student account where you can 
     /// enroll or exit from the class
     /// </summary>
     class StudentAccount
     {
-        private static int lastStudentAccountNumber = 0;
+        /// <summary>
+        /// database (codingclasscontext) does this for you,
+        /// so commented out the lastStudentAccountNumber variable
+        /// </summary>
+        //private static int lastStudentAccountNumber = 0;
         #region Properties
         /// <summary>
         /// Student's First name
@@ -39,7 +49,7 @@ namespace CodingClass_7_3_2019
         /// <summary>
         /// Unique number that identifies the student
         /// </summary>
-        public int StudentAccountNumber { get; private set; }
+        public int StudentAccountNumber { get; set; }
         /// <summary>
         /// Student's Email Address
         /// </summary>
@@ -61,7 +71,7 @@ namespace CodingClass_7_3_2019
         /// <summary>
         /// Date the class starts
         /// </summary>
-        public DateTime StartDate { get; private set; }
+        public DateTime StartDate { get; set; }
 
         /// <summary>
         /// Duration of the class ends
@@ -71,7 +81,7 @@ namespace CodingClass_7_3_2019
         /// <summary>
         /// Amount to be paid for the registered class/classes
         /// </summary>
-        public double AmountDue { get; set; }
+        public decimal AmountDue { get; private set; }
         #endregion
         /// <summary>
         /// This constructor sets a new Account number,
@@ -80,10 +90,10 @@ namespace CodingClass_7_3_2019
         /// </summary>
         public StudentAccount()
         {
-            StudentAccountNumber = ++lastStudentAccountNumber;
+            //StudentAccountNumber = ++lastStudentAccountNumber;
             StartDate = Convert.ToDateTime("6/9/2019");
             Duration = "12 weeks";
-            AmountDue = 350.0;
+            AmountDue = 350;
         }
         #region Methods
         /// <summary>
@@ -98,12 +108,50 @@ namespace CodingClass_7_3_2019
             StudentDateOfBirth = dateOfBirth;
             Console.WriteLine($"FN: {StudentFirstName}, LN: {StudentLastName}, DOB: {StudentDateOfBirth}");
         }*/
-        public void StudentDetails(string StudentFirstName, string StudentLastName, string StudentDateOfBirth)
-        {
-            
-            Console.WriteLine($"FN: {StudentFirstName}, LN: {StudentLastName}, DOB: {StudentDateOfBirth}");
-        }
+        //public void StudentDetails(string StudentFirstName, string StudentLastName, string StudentDateOfBirth)
+        //{
 
+        //    Console.WriteLine($"FN: {StudentFirstName}, LN: {StudentLastName}, DOB: {StudentDateOfBirth}");
+        //}
+
+        /// <summary>
+
+        /// Pay tuition for the enrolled classes
+
+        /// </summary>
+
+        /// <param name="amount">Amount to be deposited</param>
+
+        /// <returns>Text displaying tuition is paid or not</returns>
+
+        public void Deposit(decimal amount)
+
+        {
+            if (amount == AmountDue)
+            {
+                //Console.WriteLine("Tuition paid in full.");
+                return;
+            }
+            else
+            {
+                throw new ArgumentException("Amount has to be paid in full!");
+            }
+            
+
+        }
+        public void Withdraw(decimal amount)
+        {
+            if (AmountDue == amount)
+            {
+                AmountDue = 0;
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Withdraw incomplete!");
+                return;
+            }
+        }
         /// <summary>
         /// Associates the selected class type to student's account Number
         /// </summary>
