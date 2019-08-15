@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CodingClass_7_3_2019
 {
-    static class FactoryClass
+    public static class FactoryClass
     {
         /// Commented out the List as it only provided temporary storage
         /// and replaced with database that is a permanent storage
@@ -81,7 +81,7 @@ namespace CodingClass_7_3_2019
         /// </summary>
         /// <param name="accountNumber"></param>
         /// <returns></returns>
-        private static StudentAccount FindAccountByAccountNumber(int accountNumber)
+        public static StudentAccount FindAccountByAccountNumber(int accountNumber)
         {
             var account = db.StudentAccounts.SingleOrDefault(a => a.StudentAccountNumber == accountNumber);
             if (account == null)
@@ -90,6 +90,25 @@ namespace CodingClass_7_3_2019
             }
            
             return account;
+        }
+
+        public static void EditStudentAccount(StudentAccount updatedStudentAccount)
+        {
+            var oldAccount = FindAccountByAccountNumber(updatedStudentAccount.StudentAccountNumber);
+            oldAccount.StudentFirstName = updatedStudentAccount.StudentFirstName;
+            oldAccount.StudentLastName = updatedStudentAccount.StudentLastName;
+            oldAccount.StudentEmailAddress = updatedStudentAccount.StudentEmailAddress;
+            oldAccount.StudentDifficultyLevel = updatedStudentAccount.StudentDifficultyLevel;
+            oldAccount.StudentClassType = updatedStudentAccount.StudentClassType;
+
+            db.SaveChanges();
+        }
+
+        public static void DeleteStudentAccount(int accountNumber)
+        {
+            var account = FindAccountByAccountNumber(accountNumber);
+            db.StudentAccounts.Remove(account);
+            db.SaveChanges();
         }
     }
 }

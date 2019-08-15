@@ -1,0 +1,90 @@
+﻿@model IEnumerable<CodingClass_7_3_2019.StudentAccount>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentDateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentEmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentDifficultyLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentClassType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalClassesEnrolled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountDue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentDateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentEmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentDifficultyLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentClassType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalClassesEnrolled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountDue)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StudentAccountNumber">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StudentAccountNumber">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StudentAccountNumber">Delete</a> |
+                <a asp-action="PayFee" asp-route-id="@item.StudentAccountNumber">PayFee</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

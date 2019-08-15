@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CodingClass_7_3_2019
 {
-    class CodingClassContext : DbContext
+    public class CodingClassContext : DbContext
     {
         public DbSet<StudentAccount> StudentAccounts { get; set; }
         public DbSet<StudentCourseHistory> StudentHistory { get; set; }

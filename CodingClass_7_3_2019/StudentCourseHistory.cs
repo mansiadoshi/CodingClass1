@@ -4,12 +4,12 @@ using System.Text;
 
 namespace CodingClass_7_3_2019
 {
-    enum PaymentType
+    public enum PaymentType
     {
         Credit,
         Debit
     }
-    class StudentCourseHistory
+    public class StudentCourseHistory
     {
         public int CourseHistoryID { get; set; }
 

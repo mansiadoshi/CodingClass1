@@ -4,20 +4,20 @@ using System.Text;
 
 namespace CodingClass_7_3_2019
 {
-    enum ClassDifficultyLevel
+    public enum ClassDifficultyLevel
     {
         Beginner,
         Intermediate,
         Advance
     }
-    enum ClassType
+    public enum ClassType
     {
         CSharp,
         Python,
         Java
     }
 
-    enum PaymentMethod
+    public enum PaymentMethod
     {
         Credit,
         Debit
@@ -26,7 +26,7 @@ namespace CodingClass_7_3_2019
     /// A student account where you can 
     /// enroll or exit from the class
     /// </summary>
-    class StudentAccount
+    public class StudentAccount
     {
         /// <summary>
         /// database (codingclasscontext) does this for you,
@@ -124,13 +124,13 @@ namespace CodingClass_7_3_2019
 
         /// <returns>Text displaying tuition is paid or not</returns>
 
-        public void Deposit(decimal amount)
+        public bool Deposit(decimal amount)
 
         {
             if (amount == AmountDue)
             {
                 //Console.WriteLine("Tuition paid in full.");
-                return;
+                return true;
             }
             else
             {
